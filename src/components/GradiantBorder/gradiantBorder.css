@@ -1,0 +1,47 @@
+.gradientborder {
+  position: relative;
+
+  cursor: pointer;
+  color: #073344;
+  background-color: rgb(182, 220, 231);
+  border-radius: 12px;
+  z-index: auto;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.gradientborder::before,
+.gradientborder::after {
+  content: "";
+  position: absolute;
+  border-radius: 15px;
+  inset: -3px;
+  z-index: -5;
+  background-image: conic-gradient(
+    from var(--angle),
+    #120a8f,
+    #00ced1,
+    #0e3386,
+    #00bfff,
+    #0e3386
+  );
+  animation: spin 3s linear infinite;
+}
+
+.gradientborder::after {
+  inset: -4px;
+  filter: blur(10px);
+  opacity: 0.5;
+}
+
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}

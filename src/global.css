@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&family=SUSE:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: "SUSE Mono";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.gradient {
+  background-image: linear-gradient(
+      90deg,
+      transparent 28%,
+      white 28%,
+      white 84%,
+      transparent 84%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 28%,
+      white 28%,
+      white 84%,
+      transparent 84%
+    ),
+    linear-gradient(0deg, rgba(181, 215, 219, 0.25) 12%, transparent 12%),
+    linear-gradient(90deg, rgba(181, 215, 219, 0.25) 12%, transparent 12%);
+  background-size: 15px 15px;
+}
+
+::view-transition-group(root) {
+  z-index: auto !important;
+}
+::view-transition-image-pair(root) {
+  isolation: isolate;
+  will-change: trasnform, opacity, scale;
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+  animation: none !important;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+  animation: none !important;
+}
+
+.oswald {
+  font-family: "Oswald";
+  font-weight: 400;
+}
+.suse {
+  font-family: "SUSE";
+  font-weight: 500;
+  font-style: normal;
+  font-optical-sizing: auto;
+}
